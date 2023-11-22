@@ -1,0 +1,6 @@
+server.port: 8086
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
