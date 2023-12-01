@@ -26,10 +26,10 @@ public class TestDataInit {
         itemRepository.save(new Item("itemB", 20000, 20));
 
         Member member = new Member();
+        member.setName("테스트");
         member.setLoginId("test");
-        member.setName("test!");
-        member.setPassword("test!!");
-
+        member.setPassword("test!");
+        
         memberRepository.save(member);
     }
 

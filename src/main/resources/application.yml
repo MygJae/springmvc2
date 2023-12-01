@@ -1,7 +1,17 @@
-server.port: 8086
 #logging.level.org.apache.coyote.http11: debug
-spring.output.ansi.enabled: ALWAYS
+server:
+  port: 8086
+  servlet:
+    encoding:
+      charset: UTF-8
+    session:
+      tracking-modes: cookie
+      timeout: 60
+
 spring:
+  output:
+    ansi:
+      enabled: ALWAYS
   messages:
     basename: messages,errors
 
