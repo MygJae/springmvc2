@@ -6,7 +6,7 @@ server:
       charset: UTF-8
     session:
       tracking-modes: cookie
-      timeout: 60
+      timeout: 1800
 
 spring:
   output:
