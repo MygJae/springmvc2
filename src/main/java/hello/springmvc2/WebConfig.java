@@ -1,6 +1,8 @@
 package hello.springmvc2;
 
 import hello.springmvc2.web.argumentResolver.LoginMemberArgumentResolver;
+import hello.springmvc2.web.exception.resolver.MyHandlerExceptionResolver;
+import hello.springmvc2.web.exception.resolver.UserHandlerExceptionResolver;
 import hello.springmvc2.web.filter.LogFilter;
 import hello.springmvc2.web.filter.LoginCheckFilter;
 import hello.springmvc2.web.interceptor.LoginCheckInterceptor;
@@ -9,6 +11,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -67,5 +70,10 @@ public class WebConfig implements WebMvcConfigurer {
         return filterRegistrationBean;
     }
 
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.add(new MyHandlerExceptionResolver());
+        resolvers.add(new UserHandlerExceptionResolver());
+    }
 
 }
