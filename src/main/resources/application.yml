@@ -7,6 +7,13 @@ server:
     session:
       tracking-modes: cookie
       timeout: 1800
+  error:
+    whitelabel:
+      enabled: false
+    include-exception: true
+    include-message: always
+    include-stacktrace: on_param
+    include-binding-errors: on_param
 
 spring:
   output:
@@ -14,6 +21,3 @@ spring:
       enabled: ALWAYS
   messages:
     basename: messages,errors
-
-
-
