@@ -7,9 +7,13 @@ import hello.springmvc2.web.filter.LogFilter;
 import hello.springmvc2.web.filter.LoginCheckFilter;
 import hello.springmvc2.web.interceptor.LoginCheckInterceptor;
 import hello.springmvc2.web.interceptor.LoginInterceptor;
+import hello.springmvc2.web.typeconverter.converter.IpPortToStringConverter;
+import hello.springmvc2.web.typeconverter.converter.StringToIpPortConverter;
+import hello.springmvc2.web.typeconverter.formatter.MyNumberFormatter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -75,5 +79,18 @@ public class WebConfig implements WebMvcConfigurer {
         resolvers.add(new MyHandlerExceptionResolver());
         resolvers.add(new UserHandlerExceptionResolver());
     }
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        //주석처리 우선순위
+//        registry.addConverter(new StringToIntegerConverter());
+//        registry.addConverter(new IntegerToStringConverter());
+        registry.addConverter(new StringToIpPortConverter());
+        registry.addConverter(new IpPortToStringConverter());
+
+        //추가
+        registry.addFormatter(new MyNumberFormatter());
+    }
+
 
 }
